@@ -1,25 +1,37 @@
+import React from 'react'
 import styles from './Card.module.scss'
-console.log(styles);
 
-function Card(props){
+
+function Card({title, imageUrl, price, onFavorite, onPlus}){
+   const [isAdded, setIsAdded] = React.useState(false)
+
+   const onClickPlus = ()=>{
+    onPlus({title, imageUrl, price})
+    setIsAdded(!isAdded)
+   }
+
    
+
     return(
         <div class={styles.card}>
-        <div className={styles.favorite}>
+        <div className={styles.favorite} onClick= {onFavorite}>
         <img src="/img/heart-inlike.svg" alt="Unliked"/>
         </div>
-        <img width={133} height="{112}" src={props.imageUrl} alt=""/>
-        <h5>{props.title}</h5>
+        <img width={133} height={112} src={imageUrl} alt=""/>
+        <h5>{title}</h5>
         <div className='d-flex justify-between align-center'>
         <div className='d-flex flex-column'>
             <p>Цена</p>
-            <b>{props.price}</b>
+            <b>{price}</b>
         </div>
-        <button  className="button" onClick = {props.onClick}>
-            <img width={11} height={11} src="/img/plus.svg" alt="Plus"/>
-        </button>
+
+            <img className={styles.plus} onClick = {onClickPlus}  src={isAdded ? "/img/btn-checked.svg" : "/img/btn-plus.svg"} alt="Plus"/>
+
         </div>
         </div>
     )
 }
 export default Card
+
+
+
