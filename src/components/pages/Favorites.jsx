@@ -1,21 +1,19 @@
+import Card from 'Z:/test-react/first-project/react-sneakers/src/components/Card/index.js';
 
-function Favorites () {
+function Favorites({ items, onAddToFavorite }) {
+  return (
+    <div className="content p-40">
+      <div className="d-flex align-center justify-between mb-40">
+        <h1>Мои закладки</h1>
+      </div>
 
-    return(
-        <div class="content p-40">
-        <div className="d-flex align-center mb-40 justify-between">
-         <h1>{searchValue ? `"Поиск по запросу: ${searchValue}"`: "Все кроссовки"}</h1>
-         <div className="search-block d-flex">
-           <img src="/img/search.svg" alt="Search"/>
-           {searchValue && <img onClick={() => setsearchValue ("")} className="clear cu-p" src="/img/btn-remove.svg" alt="Clear"/>}
-           <input onChange={onChangeSearchInput} value={searchValue} placeholder="Поиск..."/>
-         </div>
-        </div>
- <div className="d-flex flex-wrap">
-Тут закладки
- </div>
- </div>
-    )
+      <div className="d-flex flex-wrap">
+        {items.map((item, index) => (
+          <Card key={index} favorited={true} onFavorite={onAddToFavorite} {...item} />
+        ))}
+      </div>
+    </div>
+  );
 }
 
-export default Favorites
+export default Favorites;
