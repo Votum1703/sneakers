@@ -47,7 +47,7 @@ fetchData()
 try {
   const findItem = cartItems.find((item) => Number(item.parentId) === Number(obj.id))
   if (findItem) {
-    setCartItems(prev => prev.filter(item => Number(item.parentId) != Number(obj.id)))
+    setCartItems(prev => prev.filter(item => Number(item.parentId) !== Number(obj.id)))
     await axios.delete(`https://659403d01493b0116069ba63.mockapi.io/cart/${findItem.id}`);
     
   }else{
@@ -89,7 +89,7 @@ try {
     try {
       if (favorites.find((favObj) => Number(favObj.id) === Number(obj.id))) {
         axios.delete(`https://65a96784219bfa37186931df.mockapi.io/favorites/${obj.id}`);
-        setFavorites(prev => prev.filter(item => Number(item.id) != Number(obj.id)))
+        setFavorites(prev => prev.filter(item => Number(item.id) !== Number(obj.id)))
       } else {
         const { data } = await axios.post('https://65a96784219bfa37186931df.mockapi.io/favorites', obj);
         setFavorites((prev) => [...prev, data]);
