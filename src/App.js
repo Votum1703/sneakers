@@ -128,7 +128,7 @@ try {
 
       <Routes>
         <Route
-          path=""
+          path="/"
           element={
             <Home
               items={items}
@@ -147,7 +147,7 @@ try {
 
       <Routes>
         <Route
-          path="favorites"
+          path="/favorites"
           element={
             <Favorites />
           }
@@ -156,7 +156,7 @@ try {
       </Routes>
       <Routes>
         <Route
-          path="profile"
+          path="/profile"
           element={
             <Profile />
           }
